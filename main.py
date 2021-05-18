@@ -41,9 +41,22 @@ itemvales = {
 "gas_mask": 8,
 "hand_gun": 8,
 "batterys": 1,
-
-
 }
+
+def bunker():
+  sum=0
+
+  for item in inventory:
+    value = itemvales[item]
+
+    print("ITEM is: ", end="")
+    print(item) # print the item
+    print("value is: ", end="")
+    print(value) # get value of current item
+    sum=sum+value 
+  print(sum)
+
+
 #a dictionary linking a room to other rooms
 rooms = {
 
@@ -135,12 +148,13 @@ while True:
   move = move.lower().split()
 
   #if they type 'go' first
-  if move[0] == 'go':
-    if 
+  if move[0] == 'go': 
     #check that they are allowed wherever they want to go
     if move[1] in rooms[currentRoom]:
       #set the current room to the new room
       currentRoom = rooms[currentRoom][move[1]]
+      if currentRoom=='Bunker':
+        bunker()
     #there is no door (link) to the new room
     #add if statment, is room locked?
     #check if room is valid.
@@ -162,4 +176,4 @@ while True:
     else:
       #tell them they can't get it
       print('Can\'t get ' + move[1] + '!')
-   
+
